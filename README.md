@@ -11,12 +11,12 @@
   
 ### Step 1 : Importing the required libraries:
     Numpy: It has mathematical functions in it.
-  	 Pandas: Its purpose is to import and manage the dataset.
-   	Matplotlib 
-  	 Seaborn
+    Pandas: Its purpose is to import and manage the dataset.
+    Matplotlib 
+  	Seaborn
     Scikit learn
 ### Step 2: Importing the dataset
- The majority of data states are available in.csv format. The CSV file format is used to store tabular data in plain text. To read a local CSV file as a dataframe, we use the  Pandas library's read_csv function.
+ The majority of data states are available in.csv format. The CSV file format is used to store tabular data in plain text. To read a local CSV file as a dataframe, we used the  Pandas library's read_csv function.
  
 ### Step 3: Handling the missing data
  Data can be missing for a variety of reasons and must be handled in such a way that it does not impair the performance of our model. We used backfilling method to replace the missing data in this case.
@@ -29,7 +29,9 @@
         
 ### Step 6: Feature scaling:
  High magnitude features will be given more weight in the distance calculation than low magnitude features. In order, to avoid this we used maxminscaler() from sklearn.processing.
-
+ 
+### Step 7: Heatmap Visualization
+ For data visualisation, we used the heatmap method from the seaborn library.
     
 
  
