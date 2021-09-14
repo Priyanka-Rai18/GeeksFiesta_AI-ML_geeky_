@@ -27,7 +27,7 @@
 ### Step 5: Replacing the outliers
  We start by detecting outliers with the seaborn library and plotting them with the boxplot approach. Then, using required conditions, we assign null to each column's odd values. After that, we used the backfilling approach to fill the null.
         
-### Step 6: Feature scaling:
+### Step 6: Feature scaling
  High magnitude features will be given more weight in the distance calculation than low magnitude features. In order, to avoid this we used maxminscaler() from sklearn.processing.
  
 ### Step 7: Heatmap Visualization
