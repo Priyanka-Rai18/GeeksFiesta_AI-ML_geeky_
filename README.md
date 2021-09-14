@@ -9,7 +9,7 @@
  ### Aim
   To clean/process the Data, find count of missing values in each column and describe the dataset.
   
-### Step 1 : Importing the required libraries:
+### Step 1 : Importing the required libraries
     Numpy: It has mathematical functions in it.
     Pandas: Its purpose is to import and manage the dataset.
     Matplotlib 
