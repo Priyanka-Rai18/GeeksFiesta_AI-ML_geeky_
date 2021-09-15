@@ -37,14 +37,14 @@ As the data set is already sorted concerning hours, day, month, year. So if we f
 ### Step 2: Replacing the outliers
 
 ## Data Analysis| Day 4-Day 5
-### Step 1: Analysing each column with every column
-### Step 2: Finding Correlation of 'PM2.5' with rest of the column
+### Step 3: Analysing each column with every column
+### Step 4: Finding Correlation of 'PM2.5' with rest of the column
 
 ## Data Visualisation| Day 4-Day 5
-### Step 1: Heatmap Visualization
+### Step 5: Heatmap Visualization
  For Correlation analysis, we used the heatmap method from the seaborn library.
-### Step 2: Performing line plot
-### Step 3: Performing Boxplot for every column
+### Step 6: Performing line plot
+### Step 7: Performing Boxplot for every column
 
 
     
