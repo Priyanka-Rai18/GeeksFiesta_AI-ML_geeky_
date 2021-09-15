@@ -9,6 +9,7 @@
  ## Introduction| Day 1
   An introduction to machine learning was given, followed by a discussion of the roadmap.
  # Day 2:
+ ## Github repo| Day 2
   We set up a private github repository named as 'GeeksFiesta_AI-ML_geeky_couple' and invited mentors to join as collaborators.
  # Day 3:
  ## Data Cleaning| Day 3
