@@ -5,13 +5,13 @@
     Priyanka Rai (Team leader) & Sandeep Swain
  ## Using
     Python3
- # Day 1:   
+ ## Day 1:   
  ## Introduction| Day 1
   An introduction to machine learning was given, followed by a discussion of the roadmap.
- # Day 2:
+ ## Day 2:
  ## Github repo| Day 2
   We set up a private github repository named as 'GeeksFiesta_AI-ML_geeky_couple' and invited mentors to join as collaborators.
- # Day 3:
+ ## Day 3:
  ## Data Cleaning| Day 3
  ### Aim
   To clean/process the Data, find count of missing values in each column and describe the dataset.
@@ -36,7 +36,7 @@ As the data set is already sorted concerning hours, day, month, year. So if we f
 ### Step 5: Feature scaling
  High magnitude features will be given more weight in the distance calculation than low magnitude features. In order, to avoid this we used maxminscaler() from sklearn.processing.
  
-# Day 4-5:
+## Day 4-5:
 ## Data PreProcessing| Day 4-Day 5
 ### Step 1: Detecting outlier 
 ### Step 2: Replacing the outliers
