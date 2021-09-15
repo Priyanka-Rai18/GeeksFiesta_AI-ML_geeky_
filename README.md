@@ -5,7 +5,13 @@
     Priyanka Rai (Team leader) & Sandeep Swain
  ## Using
     Python3
- ## Data PreProcessing| Day 2
+ # Day 1:   
+ ## Introduction| Day 1
+  An introduction to machine learning was given, followed by a discussion of the roadmap.
+ # Day 2:
+  We set up a private github repository named as 'GeeksFiesta_AI-ML_geeky_couple' and invited mentors to join as collaborators.
+ # Day 3:
+ ## Data Cleaning| Day 3
  ### Aim
   To clean/process the Data, find count of missing values in each column and describe the dataset.
   
@@ -15,6 +21,7 @@
     Matplotlib 
   	Seaborn
     Scikit learn
+    Scipy
 ### Step 2: Importing the dataset
  The majority of data states are available in.csv format. The CSV file format is used to store tabular data in plain text. To read a local CSV file as a dataframe, we used the  Pandas library's read_csv function.
  
@@ -24,15 +31,26 @@ As the data set is already sorted concerning hours, day, month, year. So if we f
 
 ### Step 4: Encoding categorical data 
  Categorical data variable that contains level values rather than numeric values. the number of possible values is often limited to a fixed set. For example here the wind_direction column cannot be used in the mathematical equation of the model so we need to encode these variables into numbers. To achieve this we import the pandas library and use the get_dummies function.
-
-### Step 5: Replacing the outliers
- We start by detecting outliers with the seaborn library and plotting them with the boxplot approach. Then, using required conditions, we assign null to each column's odd values. After that, we used the backfilling approach to fill the null.
         
-### Step 6: Feature scaling
+### Step 5: Feature scaling
  High magnitude features will be given more weight in the distance calculation than low magnitude features. In order, to avoid this we used maxminscaler() from sklearn.processing.
  
-### Step 7: Heatmap Visualization
+# Day 4-5:
+## Data PreProcessing| Day 4-Day 5
+### Step 1: Detecting outlier 
+### Step 2: Replacing the outliers
+
+## Data Analysis| Day 4-Day 5
+### Step 1: Analysing each column with every column
+### Step 2: Finding Correlation of 'PM2.5' with rest of the column
+
+## Data Visualisation| Day 4-Day 5
+### Step 1: Heatmap Visualization
  For Correlation analysis, we used the heatmap method from the seaborn library.
+### Step 2: Performing line plot
+### Step 3: Performing Boxplot for every column
+
+
     
 
  
