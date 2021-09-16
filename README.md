@@ -34,17 +34,26 @@ As the data set is already sorted concerning hours, day, month, year. So if we f
  High magnitude features will be given more weight in the distance calculation than low magnitude features. In order, to avoid this we used maxminscaler() from sklearn.processing.
 ## Data PreProcessing| Day 4-Day 5
 ### Step 1: Detecting outlier 
+ We identified Outliers by creating a Boxplot for each column and observing the range and number of dots or "too far away" points, which are values that deviate more or less than the expected range.
 ### Step 2: Replacing the outliers
+First, we print the outlier's location by specifying the required condition. After that, we set the detected oulier to null and fill it using the **median** approach.
 
 ## Data Analysis| Day 4-Day 5
 ### Step 3: Analysing each column with every column
+we found the relationship between each column and all other columns using the **corr()** function of the **pandas** library and then plotting graph using seaborn library.
+ 
 ### Step 4: Finding Correlation of 'PM2.5' with rest of the column
+we found PM2.5 relation with every column using corr() funtion of pandas.
 
 ## Data Visualisation| Day 4-Day 5
 ### Step 5: Heatmap Visualization
  For Correlation analysis, we used the heatmap method from the seaborn library.
 ### Step 6: Performing line plot
-### Step 7: Performing Boxplot for every column
+ We then plotted a Graph for the dataframe using **Pandas** library.
+### Step 7: Plotting Boxplot for every column after fixing outliers
+ We observed in column "year" and "temperature" have median> mean while in column "month" and "wind_speed" habe median<mean.
+### Step 8: Performing Boxplot for every column
+we then plotted a pairplot with PM2.5 as the x-axis vs each column. And we observed, PM2.5 is constant across all columns.
 
 
     
