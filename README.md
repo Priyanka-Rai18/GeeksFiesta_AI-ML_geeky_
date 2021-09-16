@@ -51,7 +51,7 @@ we found PM2.5 relation with every column using corr() funtion of pandas.
 ### Step 6: Performing line plot
  We then plotted a Graph for the dataframe using **Pandas** library.
 ### Step 7: Plotting Boxplot for every column after fixing outliers
- We observed in column "year" and "temperature" have median> mean while in column "month" and "wind_speed" habe median<mean.
+ We observed in column "year" and "temperature" have median> mean while in column "month" and "wind_speed" have median<mean.
 ### Step 8: Performing Boxplot for every column
 we then plotted a pairplot with PM2.5 as the x-axis vs each column. And we observed, PM2.5 is constant across all columns.
 
