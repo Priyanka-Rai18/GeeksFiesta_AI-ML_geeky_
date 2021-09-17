@@ -4,7 +4,16 @@
  ### geeky_couple
     Priyanka Rai (Team leader) & Sandeep Swain
  ## Using
-    Python3   
+    Python3  
+ ## Libraries
+  This Project needs python and uses the following libraries:
+    
+    Numpy: 
+    Pandas: 
+    Matplotlib 
+  	Seaborn
+    Scikit learn
+    Scipy
  ## Introduction| Day 1
   An introduction to machine learning was given, followed by a discussion of the roadmap.
  ## Github repo| Day 2
@@ -14,12 +23,7 @@
   To clean/process the Data, find count of missing values in each column and describe the dataset.
   
 ### Step 1 : Importing the required libraries
-    Numpy: It has mathematical functions in it.
-    Pandas: Its purpose is to import and manage the dataset.
-    Matplotlib 
-  	Seaborn
-    Scikit learn
-    Scipy
+
 ### Step 2: Importing the dataset
  The majority of data states are available in.csv format. The CSV file format is used to store tabular data in plain text. To read a local CSV file as a dataframe, we used the  Pandas library's read_csv function.
  
@@ -54,6 +58,18 @@ we found PM2.5 relation with every column using corr() funtion of pandas.
  We observed in column "year" and "temperature" have median> mean while in column "month" and "wind_speed" have median<mean.
 ### Step 8: Performing Boxplot for every column
 we then plotted a pairplot with PM2.5 as the x-axis vs each column. And we observed, PM2.5 is constant across all columns.
+## Model training and Evaluation| Day 5-Day 6
+### Aim
+    We have to build and train a model which will predict the quality of air and PM 2.5 concentrations.
+### Step 1: Spliting the Dataset
+### Step 2: Training the model by Random Forest Regression
+### Step 3: Evaluating Accuracy of Random Forest 
+### Step 4: Training the model by Decision Tree Regression
+### Step 5: Evaluating Accuracy of  Decision Tree
+### Step 6: Testing the model
+### Step 7: Choosing the best accuracy model
+### Step 8: Plotting graph of actual vs predicted
+### Step 9: Predicting output on 10 different inputs
 
 
     
