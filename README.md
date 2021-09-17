@@ -65,17 +65,17 @@ we then plotted a pairplot with PM2.5 as the x-axis vs each column. And we obser
  We splitted the Dataset into 70:30 ratio for training and testing using skicit learn library.
 ### Step 2: Random Forest Regression| regression-1
  Here, We used the fit method to train our model by importing RandomForestRegressor from sklearn.ensemble.  
-### Step 4: Decision Tree Regression| regression-2
+### Step 3: Decision Tree Regression| regression-2
  Here, We used the fit method to train our model by importing DecisiontreeRegressor from sklearn.ensemble.
-### Step 5: Model Evaluation
+### Step 4: Model Evaluation
  We used R^2 for calculating accuracy and also printed error like mean absolute, squared and root mean squared error.
-### Step 6: Testing the model
+### Step 5: Testing the model
  Here, we tested out model with the remaning 30% of data which we splitted in the beginning.
-### Step 8: Plotting graph of actual vs predicted
+### Step 6: Plotting graph of actual vs predicted
  We plotted a graph between the actual values and prediccted values by using matplotlib.
 ### Step 7: Performance comparision
  Here, we observed that random forest gives more Accuracy i.e (46.35%) than decision tree(30.10%) as shown below. So, we opted random forest regression for our model.
-### Step 9: Predicting output on 10 different inputs
+### Step 8: Predicting output on 10 different inputs
  In this step, Our random forest model will provide predictions of PM2.5 concentration for ten alternative inputs to the dataset that we import.
 
 
