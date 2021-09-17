@@ -8,8 +8,8 @@
  ## Libraries
   This Project needs python and uses the following libraries:
     
-    Numpy: 
-    Pandas: 
+    Numpy
+    Pandas 
     Matplotlib 
   	Seaborn
     Scikit learn
