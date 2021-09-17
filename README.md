@@ -20,7 +20,7 @@
   We set up a private github repository named as 'GeeksFiesta_AI-ML_geeky_couple' and invited mentors to join as collaborators.
  ## Data Cleaning| Day 3
  ### Aim
-  To clean/process the Data, find count of missing values in each column and describe the dataset.
+    To clean/process the Data, find count of missing values in each column and describe the dataset.
   
 ### Step 1 : Importing the required libraries
 
@@ -60,7 +60,7 @@ we found PM2.5 relation with every column using corr() funtion of pandas.
 we then plotted a pairplot with PM2.5 as the x-axis vs each column. And we observed, PM2.5 is constant across all columns.
 ## Model training and Evaluation| Day 5-Day 6
 ### Aim
-  We have to build and train a model which will predict the quality of air and PM 2.5 concentrations.
+    We have to build and train a model which will predict the quality of air and PM 2.5 concentrations.
 ### Step 1: Splitting the Dataset
  We splitted the Dataset into 70:30 ratio for training and testing using skicit learn library.
 ### Step 2: Random Forest Regression| regression-1
