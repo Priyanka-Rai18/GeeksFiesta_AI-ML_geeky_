@@ -67,7 +67,7 @@ we then plotted a pairplot with PM2.5 as the x-axis vs each column. And we obser
 ### Step 4: Training the model by Decision Tree Regression
 ### Step 5: Evaluating Accuracy of  Decision Tree
 ### Step 6: Testing the model
-### Step 7: Choosing the best accuracy model
+### Step 7: Selecting the best accuracy model
 ### Step 8: Plotting graph of actual vs predicted
 ### Step 9: Predicting output on 10 different inputs
 
