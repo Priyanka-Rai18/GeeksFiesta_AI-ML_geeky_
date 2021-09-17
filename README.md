@@ -3,8 +3,8 @@
  ## Meet the Team
  ### geeky_couple
     Priyanka Rai (Team leader) & Sandeep Swain
- ## Using
-    Python3  
+ ## Tools
+    Google colab  
  ## Libraries
   This Project needs python and uses the following libraries:
     
@@ -61,15 +61,22 @@ we then plotted a pairplot with PM2.5 as the x-axis vs each column. And we obser
 ## Model training and Evaluation| Day 5-Day 6
 ### Aim
   We have to build and train a model which will predict the quality of air and PM 2.5 concentrations.
-### Step 1: Spliting the Dataset
-### Step 2: Training the model by Random Forest Regression
-### Step 3: Evaluating Accuracy of Random Forest 
-### Step 4: Training the model by Decision Tree Regression
-### Step 5: Evaluating Accuracy of  Decision Tree
+### Step 1: Splitting the Dataset
+ We splitted the Dataset into 70:30 ratio for training and testing using skicit learn library.
+### Step 2: Random Forest Regression| regression-1
+ Here, We used the fit method to train our model by importing RandomForestRegressor from sklearn.ensemble.  
+### Step 4: Decision Tree Regression| regression-2
+ Here, We used the fit method to train our model by importing DecisiontreeRegressor from sklearn.ensemble.
+### Step 5: Model Evaluation
+ We used R^2 for calculating accuracy and also printed error like mean absolute, squared and root mean squared error.
 ### Step 6: Testing the model
+ Here, we tested out model with the remaning 30% of data which we splitted in the beginning.
 ### Step 8: Plotting graph of actual vs predicted
+ We plotted a graph between the actual values and prediccted values by using matplotlib.
 ### Step 7: Performance comparision
+ Here, we observed that random forest gives more Accuracy i.e (46.35%) than decision tree(30.10%) as shown below. So, we opted random forest regression for our model.
 ### Step 9: Predicting output on 10 different inputs
+ In this step, Our random forest model will provide predictions for ten alternative inputs to the dataset that we import.
 
 
     
