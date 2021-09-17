@@ -60,7 +60,7 @@ we found PM2.5 relation with every column using corr() funtion of pandas.
 we then plotted a pairplot with PM2.5 as the x-axis vs each column. And we observed, PM2.5 is constant across all columns.
 ## Model training and Evaluation| Day 5-Day 6
 ### Aim
-    We have to build and train a model which will predict the quality of air and PM 2.5 concentrations.
+  We have to build and train a model which will predict the quality of air and PM 2.5 concentrations.
 ### Step 1: Spliting the Dataset
 ### Step 2: Training the model by Random Forest Regression
 ### Step 3: Evaluating Accuracy of Random Forest 
