@@ -77,6 +77,13 @@ we then plotted a pairplot with PM2.5 as the x-axis vs each column. And we obser
  Here, we observed that random forest gives more Accuracy i.e (46.35%) than decision tree(30.10%) as shown below. So, we opted random forest regression for our model.
 ### Step 8: Predicting output on 10 different inputs
  In this step, Our random forest model will provide predictions of PM2.5 concentration for ten alternative inputs to the dataset that we import.
+##Prediction of PM2.5 on the given data set| Day 7
+### Step 1: Filling the missing values
+ At first, We filled the missing values of the given test dataset.
+### Step 2: Scaling the test data
+ After that, we used feature scaling to scale out the testing dataset.
+### Step 3: Predicting PM2.5 concentration
+ Then, using our model, we predicted PM2.5 concentrations and added them to our final dataframe.
 
 
     
