@@ -1,0 +1,19 @@
+<html>
+   <body>
+      <form action = "http://127.0.0.1:5000/" method = "POST">
+         <p>Year  <input type = "number" name = "Year" /></p>
+         <p>Month  <input type = "number" name = "Month" /></p>
+         <p>Day   <input type = "number" name = "Day" /></p>
+         <p>Hour  <input type ="number" name = "Hour" /></p>
+         <p>Temperature  <input type = "number" name = "Temperature" /></p>
+         <p>Pressure   <input type = "number" name = "Pressure" /></p>
+         <p>Wind_direction <input type = "text" name = "wind_direction" /></p>
+         <p>Wind_speed  <input type = "number" name = "wind_speed" /></p>
+         <p><input type = "submit" value = "PM2.5" /></p>
+
+      </form>
+      {% if pm2_pred %}
+         <p> Predicted PM2.5 concentration is: </p>{{prediction}}
+      {%endif%}
+   </body>
+</html>
