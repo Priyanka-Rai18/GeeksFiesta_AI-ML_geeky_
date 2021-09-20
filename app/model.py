@@ -14,34 +14,60 @@ Original file is located at
 #importing libraries
 import numpy as np
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import MinMaxScaler
 import pickle
 
+def prediction(year,month,day,hour,temperature,pressure,rain,wind_direction,wind_speed):
+  E,	ENE,	ESE,	N,	NE,	NNE,	NNW,	NW,	S,	SE,	SSE,	SSW,	SW,	W,	WNW,	WSW = 0
+  if wind_direction=='E':
+    E=1
+  if wind_direction=='ENE':
+    ENE=1
+  if wind_direction=='ESE':
+    ESE=1
+  if wind_direction=='NE':
+    NE=1
+  if wind_direction=='NNE':
+    NNE=1
+  if wind_direction=='NNW':
+    NNW=1
+  if wind_direction=='NW':
+    NW=1
+  if wind_direction=='S':
+    S=1
+  if wind_direction=='SE':
+    SE=1
+  if wind_direction=='SE':
+    SE=1
+  if wind_direction=='SSE':
+    SSE=1
+  if wind_direction=='SSW':
+    SSW=1
+  if wind_direction=='SW':
+    SW=1
+  if wind_direction=='W':
+    W=1
+  if wind_direction=='WNW':
+    WNW=1
+  if wind_direction=='WSW':
+    WSW=1
+
+  x=np.array[year,month,hour,temperature,wind_speed,E,	ENE,	ESE,	N,	NE,	NNE,	NNW,	NW,	S,	SE,	SSE,	SSW,	SW,	W,	WNW,	WSW]
+  x=scaling.fit_transform(x[year,month,hour,pressure])
+  pm2 = reg.predict(x)
+  return pm2
+
 #importing dataset
-df=pd.read_csv("/content/train - train (2).csv")
+df=pd.read_csv("app/new-dataset-geeky_couple (1).csv")
    
  
 df=df.fillna(method="bfill")
 
 dummies = pd.get_dummies(df['wind_direction'])
-df = df.drop('wind_direction',1)
+df = df.drop('wind_direction',axis=1)
 df = pd.concat([df, dummies], axis=1)
-
-for x in df.index:
-  if df.loc[x,"month"]<1:
-    df.loc[x,"month"]=None
-  try:
-    df.loc[x,"pressure"]=float(df.loc[x,"pressure"])
-  except:
-    df.loc[x,"pressure"]=None  
-  for x in df.index:
-    try:
-      df.loc[x,"year"]=int(df.loc[x,"year"])
-    except:
-      df.loc[x,"year"]=None
 
 
 df=df.fillna(method="bfill")
@@ -63,18 +89,18 @@ print(np.where(df['wind_speed']>4))
 median1 = df.loc[df['wind_speed']>4, 'wind_speed'].median()
 df.loc[df.wind_speed>4, 'wind_speed'] = np.nan
 df.fillna(median1,inplace=True)
-df.boxplot(['wind_speed'])
+
 
 #REPLACING OUTLIER IN rain COLUMN BY MEDIAN METHOD
 # Position of the Outlier
 print(np.where(df['rain']>0))
 median2 = df.loc[df['rain']>0, 'rain'].median()
-df.loc[df1.rain>0, 'rain'] = np.nan
+df.loc[df.rain>0, 'rain'] = np.nan
 df.fillna(median2,inplace=True)
 df.boxplot(['rain'])
 
 
-df=df.drop(['day'],1)
+df=df.drop(['day'],axis=1)
 
 
 df= df.loc[:, ~df.columns.str.contains('^Unnamed')]
@@ -83,24 +109,15 @@ df= df.loc[:, ~df.columns.str.contains('^Unnamed')]
 x = df.drop(['PM2.5'],axis=1)
 y = df[['PM2.5']]
 
-from sklearn.model_selection import train_test_split
-x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.30, random_state=42)
 
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import accuracy_score
 reg = RandomForestRegressor(n_estimators=13, random_state=0)
 #training the dataset
-reg.fit(x_train,y_train.values.ravel())
+reg.fit(x,y.values.ravel())
+print(prediction(2016,3,20,5,0,1025,0.1,3.1))
 
+# pickle.dump(reg, open('model.pkl','wb'))
 
-
-print("Predicted values of PM 2.5:", reg.predict(x_test))
-y_pred = reg.predict(x_test)
-# y_pred.shape
-
-
-
-pickle.dump(reg, open('model.pkl','wb'))
-
-model = pickle.load(open('model.pkl','rb'))
+# model = pickle.load(open('model.pkl','rb'))
 
