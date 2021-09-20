@@ -86,6 +86,8 @@ we then plotted a pairplot with PM2.5 as the x-axis vs each column. And we obser
  After that, we used feature scaling to scale out the testing dataset.
 ### Step 3: Predicting PM2.5 concentration
  Then, using our model, we predicted PM2.5 concentrations and added them to our final dataframe.
+## Deployment of model using Flask| Day 8- Day 9
+http://127.0.0.1:5000/
 
 
     
