@@ -18,16 +18,12 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import MinMaxScaler
+import pickle
 
 #importing dataset
 df=pd.read_csv("/content/train - train (2).csv")
 df
 
-"""##Missing values
-Printing null values of each column with the help of isnull() function.
-"""
-
-#missing values
 print(df.isnull().sum())
 
 """##Filling missing values
@@ -114,23 +110,6 @@ Dropping the column with dummy wind direction values and assigning it to a new d
 df1 = df.drop(['E','ENE','ESE','N','NE','NNE','NNW','NW','S','SE','SSE','SSW','SW','W','WNW','WSW'],1)
 df1
 
-"""##Detecting the outliers
-Outliers are identified by creating a boxplot for each column and observing the range and number of dots or "too far away" points, which are values that deviate more or less than the expected range.
-We found multivarient outliers in **wind_speed** and **rain** column.
-"""
-
-#boxplot method for detecting outliers
-for column in df1:
-  try:
-    plt.figure()
-    df1.boxplot([column])
-  except:
-    continue
-
-"""##Replacting Outlier by median method
-First, we print the outlier's location by specifying the required condition. After that, we set the detected oulier to null and fill it using the **median** approach.
-"""
-
 #REPLACING OUTLIER IN wind_speed COLUMN BY MEDIAN METHOD
 
 # Position of the Outlier
@@ -154,74 +133,9 @@ df.loc[df1.rain>0, 'rain'] = np.nan
 df.fillna(median2,inplace=True)
 df.boxplot(['rain'])
 
-"""##Finding Correlation
-The relationship between each column and all other columns is found using the **corr()** function of the **pandas** library.
-"""
-
-#correlation
-df[['year','month','day','hour','PM2.5','temperature','pressure','rain','wind_speed']].corr()
-
-"""##Plotting graph of the relationship between each column with other columns
-This can be accomplished by importing **pairplot** from the **seaborn** library, which pairs the relationships between each column and the other columns.
-"""
-
-#Analysing relation between each columns with every other
-sns.pairplot(data=df1.corr())
-
-"""##Finding correlation of **PM2.5** with rest of the columns
-
-"""
-
-#correlation of PM2.5 with rest of the columns
-df[['year','month','day','hour','PM2.5','temperature','pressure','rain','wind_speed']].corr()['PM2.5']
-
-"""#Heatmap Visualization
-Correlation of columns is visualized though heatmap method importing from seaborn library. A good correlation is considered between -0.6 to 0.6 while 1 for the best correlation.
-"""
-
-#heatmap
-fig, ax = plt.subplots(figsize=(23,10))
-sns.heatmap(df[['year','month','day','hour','PM2.5','temperature','pressure','rain','wind_speed',]].corr(), cmap='coolwarm',center=0,  annot=True)
 
 df=df.drop(['day'],1)
 
-#printing strong correlation pairs
-cp=df1.corr().unstack()
-cp.sort_values(kind="quicksort")
-sp=cp[abs(cp)>0.5]
-print(sp)
-
-"""##Plotting the dataframe
-Graph plot for the dataframe using **Pandas** library.
-"""
-
-#plotting the dataset using line plot
-df1.plot(kind ='line')
-plt.show()
-
-df[['month','PM2.5','temperature','pressure','rain','wind_speed']].plot()
-plt.show()
-
-"""##Boxplot for every column after fixing outliers
-The dividing green line in the box (or median) in the **'year'** column is at the top of the box, indicating that it is below skewed, which implies the median is larger than the mean, same for the **'temperature'** column, whereas the mean is more than the median in the **'month'** and **'wind speed'** columns  as they are above skewed.
-Every graph that we retained has a univariate outlier (single dot) that will assist us acquire decent accuracy..
-
-"""
-
-#boxplot for each column
-for column in df:
-    plt.figure()
-    df.boxplot([column])
-
-"""#Graph of PM2.5 with every column
-A pairplot with PM2.5 as the x-axis in each column is created to see how different columns affect PM2.5.
-According to the graph, PM2.5 is **constant** across all columns.
-"""
-
-#PM2.5 getting affected by other columns
-sns.pairplot(data=df1.corr(),x_vars=['PM2.5'],y_vars=['year','month','day','hour','temperature','pressure','rain','wind_speed'])
-
-"""#Day 5-6"""
 
 df= df.loc[:, ~df.columns.str.contains('^Unnamed')]
 df
@@ -271,133 +185,7 @@ print("Predicted values of PM 2.5:", reg.predict(x_test))
 y_pred = reg.predict(x_test)
 y_pred.shape
 
-from sklearn.metrics import mean_absolute_error, mean_squared_error
-mae = mean_absolute_error(y_test, y_pred)
-mse = mean_squared_error(y_test,y_pred)
-rmse=np.sqrt(mse)
-print(mae) #mean absolute error
-print(mse) #mean squared error
-print(rmse) #root mean squared error
 
-"""##Plotting graph of Actual vs Predicted values"""
-
-x1 = np.array(y_test)
-y1 = np.array(y_pred)
-plt.figure(figsize=(8,6))
-plt.plot(x1, color='red')
-plt.plot(y1,color='blue')
-plt.xlim(0,200)
-plt.xlabel("Index", color='maroon')
-plt.ylabel("PM 2.5", color='maroon')
-plt.legend(["actual values", "predicted values"], loc ="upper right")
-
-plt.show()
-
-plt.figure(figsize=(8,6))
-plt.scatter(y_test,y_pred,color='purple')
-plt.title('Random Forest Regression')
-plt.xlabel("True Values")
-plt.ylabel("Predictions")
-plt.show()
-
-"""##Decision Tree
-We create a second model by using  x_train and y_train obtained above to train our decision tree regression model. We’re using the fit method and passing the parameters as shown below.
-"""
-
-#2nd algorithm
-from sklearn.tree import DecisionTreeRegressor
-
-dtr = DecisionTreeRegressor(ccp_alpha=3.0,random_state=17)
-#training the model
-dtr.fit(x_train,y_train.values.ravel())
-
-"""##Evaluating the Decision Tree Model"""
-
-#printing accuracy by R2
-dtr.score(x_test, y_test)
-
-"""##Performance Comparision of R^2
-We observed that random forest gives more Accuracy i.e **46.35%** than decision tree(**30.10%**) as shown below. **So, we opted random forest regression for our model.**
-"""
-
-x=['Decision-Tree','RandomForest']
-y=[dtr.score(x_test, y_test),reg.score(x_test, y_test)]
-plt.figure(figsize=(9,7))
-plt.bar(x,y, width = 0.7 ,color='lightgreen')
-plt.xlabel('REGRESSIONS', color='maroon')
-plt.ylabel("ACCURACY", color='maroon' )
-plt.title('Comparison of R^2', color='navy')
-plt.show()
-
-"""##INPUT FILE for prediction
-Here, Our random forest model will provide predictions for ten alternative inputs to the dataset that we import.
-
-"""
-
-#importing dataset
-it=pd.read_csv("/content/input - train - train (2).csv")
-it
-
-itdummies = pd.get_dummies(it['wind_direction'])
-it = it.drop('wind_direction',1)
-it = pd.concat([it, dummies], axis=1)
-
-it[['year','month','hour','pressure']]=scaling.transform(it[['year','month','hour','pressure']])
-
-it=it.drop(['day'],1)
-it= it.loc[:, ~it.columns.str.contains('^Unnamed')]
-it=it.dropna()
-it
-
-#Predicting Pm2.5 concentration of 10 different inputs 
-pm_ipred=reg.predict(it)
-
-print(pm_ipred)
-
-"""#Day 7
-##Prediction on the given data set
-"""
-
-#importing the csv file for prediction
-idf=pd.read_csv("/content/test_dataset.csv")
-idfmain=pd.read_csv("/content/test_dataset.csv")
-idf=idf.drop('PM2.5',1)
-idfmain=idfmain.drop('PM2.5',1)
-idf
-
-# filling the  null values
-idf=idf.fillna(method="bfill")
-idf.isnull().sum()
-
-idfdummies = pd.get_dummies(idf['wind_direction'])
-idf = idf.drop('wind_direction',1)
-idf = pd.concat([idf, dummies], axis=1)
-
-idf=idf.dropna()
-idf
-
-#feature scaling the test data
-idf[['year','month','hour','pressure']]=scaling.transform(idf[['year','month','hour','pressure']])
-
-idf
-
-# dropping "day" column
-idf=idf.drop(['day'],1)
-idf= idf.loc[:, ~idf.columns.str.contains('^Unnamed')]
-idf=idf.dropna()
-idf
-
-# predicting PM2.5 concentration
-idfpred=reg.predict(idf)
-print(idfpred)
-# filling the predicted values in the column
-idfmain['PM2.5'] = idfpred
-
-# printing the final output
-idfmain
-
-idfmain.to_csv( 'test-dataset-geeky_couple.csv' )
-import pickle
 
 pickle.dump(reg, open('model.pkl','wb'))
 

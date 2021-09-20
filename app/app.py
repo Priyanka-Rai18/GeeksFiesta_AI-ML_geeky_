@@ -1,18 +1,3 @@
-# from flask import Flask, render_template, request
-# app = Flask(__name__)
-
-# @app.route('/')
-# def PM2():
-   # return render_template('input.html')
-
-# @app.route('/result',methods = ['POST', 'GET'])
-# def result():
-   # if request.method == 'POST':
-      # result = request.form
-      # return render_template("PM2.html",result = result)
-
-# if __name__ == '__main__':
-   # app.run(debug = True)
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
@@ -22,22 +7,23 @@ model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
 def home():
+	# if request.method == 'POST':
+
     return render_template('input.html')
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['GET','POST'])
 def predict():
+	int_features = [int(x) for x in request.form.values()]
+	final_features = [np.array(int_features)]
+	prediction = model.predict(final_features)
+	output = round(prediction[0], 2)
+	return render_template('input.html', prediction_text='PM2.5 prediction {}'.format(output))
 
-    int_features = [int(x) for x in request.form.values()]
-    final_features = [np.array(int_features)]
-    prediction = reg.predict(final_features)
-
-    output = round(prediction[0], 2)
-
-    return render_template('index.html', prediction_text='PM2.5 concentration {}'.format(output))
-
-@app.route('/results',methods=['POST'])
-def results():
-
+@app.route('/predict_api',methods=['GET','POST'])
+def predict_api():
+    '''
+    For direct API calls trought request
+    '''
     data = request.get_json(force=True)
     prediction = model.predict([np.array(list(data.values()))])
 
@@ -46,3 +32,4 @@ def results():
 
 if __name__ == "__main__":
     app.run(debug=True)
+        
