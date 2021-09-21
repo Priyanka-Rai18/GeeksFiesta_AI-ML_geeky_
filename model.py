@@ -20,8 +20,23 @@ from sklearn.preprocessing import MinMaxScaler
 import pickle
 
 def prediction(year,month,day,hour,temperature,pressure,rain,wind_direction,wind_speed):
-  E,	ENE,	ESE,	N,	NE,	NNE,	NNW,	NW,	S,	SE,	SSE,	SSW,	SW,	W,	WNW,	WSW = 0
-  if wind_direction=='E':
+  E=0
+  ENE=0
+  ESE=0
+  N=0
+  NE=0
+  NNE=0
+  NNW=0
+  NW=0
+  S=0
+  SE=0
+  SSE=0
+  SSW=0
+  SW=0
+  W=0
+  WNW=0
+  WSW = 0
+  if wind_direction =='E':
     E=1
   if wind_direction=='ENE':
     ENE=1
@@ -54,17 +69,17 @@ def prediction(year,month,day,hour,temperature,pressure,rain,wind_direction,wind
   if wind_direction=='WSW':
     WSW=1
 
-  x=np.array[year,	month,	hour,	temperature	,pressure,	rain,	wind_speed,	E,	ENE	,ESE,	N,	NE,	NNE,	NNW,	NW,	S	,SE,	SSE,	SSW	,SW	,W	,WNW,WSW]
+  x=[year,	month,	hour,	temperature	,pressure,	rain,	wind_speed,	E,	ENE	,ESE,	N,	NE,	NNE,	NNW,	NW,	S	,SE,	SSE,	SSW	,SW	,W	,WNW,WSW]
   x[0]=(x[0]-ym)/yr
   x[1]=(x[1]-mm)/mr
   x[2]=(x[2]-hm)/hr
   x[4]=(x[4]-pmin)/pr
 
-  pm2 = reg.predict(x)
+  pm2 = reg.predict([x])
   return pm2
 
 #importing dataset
-df=pd.read_csv("app/new-dataset-geeky_couple (1).csv")
+df=pd.read_csv("new-dataset-geeky_couple (1).csv")
    
  
 df=df.fillna(method="bfill")
@@ -135,7 +150,8 @@ from sklearn.metrics import accuracy_score
 reg = RandomForestRegressor(n_estimators=13, random_state=0)
 #training the dataset
 reg.fit(x,y.values.ravel())
-print(prediction(2016,3,20,5,0,1025,0.1,3.1))
+#year,month,day,hour,temperature,pressure,rain,wind_direction,wind_speed
+print(prediction(2013,3,1,2,-1.1,1023.5,0,'NNW',5.6))
 
 # pickle.dump(reg, open('model.pkl','wb'))
 
