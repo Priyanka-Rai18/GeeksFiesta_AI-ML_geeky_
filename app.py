@@ -20,9 +20,9 @@ def home():
       wind_direction=request.form.get("wind_direction")
       wind_speed=request.form.get("wind_speed")
       pm_pred=p.prediction(year,month,day,hour,temperature,pressure,rain,wind_direction,wind_speed)
-      print(pm_pred)
+      pm=pm_pred
   
-    return render_template('input.html')
+    return render_template('input.html',output=pk)
 '''
 @app.route('/predict',methods=['GET','POST'])
 def predict():
