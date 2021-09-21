@@ -54,8 +54,12 @@ def prediction(year,month,day,hour,temperature,pressure,rain,wind_direction,wind
   if wind_direction=='WSW':
     WSW=1
 
-  x=np.array[year,month,hour,temperature,wind_speed,E,	ENE,	ESE,	N,	NE,	NNE,	NNW,	NW,	S,	SE,	SSE,	SSW,	SW,	W,	WNW,	WSW]
-  x=scaling.fit_transform(x[year,month,hour,pressure])
+  x=np.array[year,	month,	hour,	temperature	,pressure,	rain,	wind_speed,	E,	ENE	,ESE,	N,	NE,	NNE,	NNW,	NW,	S	,SE,	SSE,	SSW	,SW	,W	,WNW,WSW]
+  x[0]=(x[0]-ym)/yr
+  x[1]=(x[1]-mm)/mr
+  x[2]=(x[2]-hm)/hr
+  x[4]=(x[4]-pmin)/pr
+
   pm2 = reg.predict(x)
   return pm2
 
@@ -75,10 +79,26 @@ df=df.fillna(method="bfill")
 
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
-scaling = StandardScaler()#MinMaxScaler()
-scaling.fit(df[['year','month','hour','pressure']])
-df[['year','month','hour','pressure']]=scaling.fit_transform(df[['year','month','hour','pressure']])
+# scaling = MinMaxScaler()#StandardScaler()#MinMaxScaler()
+# scaling.fit(df[['year','month','hour','pressure']])
 
+# df[['year','month','hour','pressure']]=scaling.fit_transform(df[['year','month','hour','pressure']])
+sy=MinMaxScaler()
+sm=MinMaxScaler()
+sh=MinMaxScaler()
+sp=MinMaxScaler()
+df[['year']] = sy.fit_transform(df[['year']])
+ym=sy.data_min_
+yr=sy.data_range_
+df[['month']] = sm.fit_transform(df[['month']])
+mm=sm.data_min_
+mr=sm.data_range_
+df[['hour']] = sh.fit_transform(df[['hour']])
+hm=sh.data_min_
+hr=sh.data_range_
+df[['pressure']] = sp.fit_transform(df[['pressure']])
+pmin=sp.data_min_
+pr=sp.data_range_
 print(np.where(df['wind_speed']>-60))
 #replacing lower outlier
 median = df.loc[df['wind_speed']>-60, 'wind_speed'].median()
