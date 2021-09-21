@@ -22,7 +22,7 @@ def home():
       pm_pred=p.prediction(year,month,day,hour,temperature,pressure,rain,wind_direction,wind_speed)
       pm=pm_pred
   
-    return render_template('input.html',output=pk)
+    return render_template('input.html',output=pm)
 '''
 @app.route('/predict',methods=['GET','POST'])
 def predict():
