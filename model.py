@@ -114,13 +114,13 @@ hr=sh.data_range_
 df[['pressure']] = sp.fit_transform(df[['pressure']])
 pmin=sp.data_min_
 pr=sp.data_range_
-print(np.where(df['wind_speed']>-60))
+#print(np.where(df['wind_speed']>-60))
 #replacing lower outlier
 median = df.loc[df['wind_speed']>-60, 'wind_speed'].median()
 df.loc[df.wind_speed<-60, 'wind_speed'] = np.nan
 df.fillna(median,inplace=True)
 #replacing upper outlier
-print(np.where(df['wind_speed']>4))
+#print(np.where(df['wind_speed']>4))
 median1 = df.loc[df['wind_speed']>4, 'wind_speed'].median()
 df.loc[df.wind_speed>4, 'wind_speed'] = np.nan
 df.fillna(median1,inplace=True)
@@ -128,7 +128,7 @@ df.fillna(median1,inplace=True)
 
 #REPLACING OUTLIER IN rain COLUMN BY MEDIAN METHOD
 # Position of the Outlier
-print(np.where(df['rain']>0))
+#print(np.where(df['rain']>0))
 median2 = df.loc[df['rain']>0, 'rain'].median()
 df.loc[df.rain>0, 'rain'] = np.nan
 df.fillna(median2,inplace=True)
