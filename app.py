@@ -3,13 +3,18 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 import model as p
 
-
+# global pm
 app = Flask(__name__)
 # model = pickle.load(open('model.pkl', 'rb'))
 
-@app.route('/',methods=['GET','POST'])
+@app.route('/')
 def home():
-    if request.method == 'GET':
+    return render_template('input.html')
+
+@app.route('/predict',methods=['GET','POST'])
+def predict():
+    global pm
+    if request.method == 'POST':
       year=request.form.get("year")
       month=request.form.get("month")
       day=request.form.get("day")
@@ -23,7 +28,13 @@ def home():
       pm=pm_pred
   
     return render_template('input.html',output=pm)
-'''
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
+
+
+'''  
 @app.route('/predict',methods=['GET','POST'])
 def predict():
     int_features = [int(x) for x in request.form.values()]
@@ -42,6 +53,5 @@ def predict_api():
     return jsonify(output)
     '''
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
         
