@@ -151,7 +151,7 @@ reg = RandomForestRegressor(n_estimators=13, random_state=0)
 #training the dataset
 reg.fit(x,y.values.ravel())
 #year,month,day,hour,temperature,pressure,rain,wind_direction,wind_speed
-print(prediction(year,month,day,hour,temperature,pressure,rain,wind_direction,wind_speed))
+# print(prediction(year,month,day,hour,temperature,pressure,rain,wind_direction,wind_speed))
 
 # pickle.dump(reg, open('model.pkl','wb'))
 
