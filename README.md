@@ -1,4 +1,4 @@
-# GeeksFiesta_AI-ML_geeky_couple
+# GeeksFiesta_AI-ML_geeky_
  10 days Hackathon on ML !!
  ## Meet the Team
  ### geeky_couple
