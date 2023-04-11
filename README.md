@@ -1,8 +1,6 @@
 # GeeksFiesta_AI-ML_geeky_
  10 days Hackathon on ML !!
- ## Meet the Team
- ### geeky_couple
-    Priyanka Rai (Team leader) & Sandeep Swain
+
  ## Tools
     Google colab  
  ## Libraries
